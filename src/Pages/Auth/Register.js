@@ -35,6 +35,7 @@ const Register = () => {
     name : "",
     email : "",
     password : "",
+    Contact : "",
 
   });
 
@@ -46,7 +47,7 @@ const Register = () => {
     pauseOnHover: false,
     draggable: true,
     progress: undefined,
-    theme: "dark",
+    theme: "light",
   }
 
   const handleChange = (e) => {
@@ -56,14 +57,15 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-      const {name, email, password} = values;
+      const {name, email, password, Contact} = values;
 
       setLoading(false);
      
       const {data} = await axios.post(registerAPI, {
         name,
         email,
-        password
+        password,
+        Contact
       });
 
       if(data.success === true){
@@ -89,7 +91,7 @@ const Register = () => {
         options={{
           background: {
             color: {
-              value: '#000',
+              value: '#FFC0CB',
             },
           },
           fpsLimit: 60,
@@ -102,7 +104,7 @@ const Register = () => {
               },
             },
             color: {
-              value: '#ffcc00',
+              value: '#333333',
             },
             shape: {
               type: 'circle',
@@ -149,7 +151,7 @@ const Register = () => {
         }}
       />
 
-      <Container className="mt-5" style={{position: 'relative', zIndex: "2 !important", color:"white !important"}}>
+      <Container className="mt-5" style={{position: 'relative', zIndex: "2 !important", color:"pink !important"}}>
       <Row>
         <h1 className="text-center">
           <AccountBalanceWalletIcon sx={{ fontSize: 40, color: "white"}}  className="text-center" />
@@ -170,6 +172,10 @@ const Register = () => {
             <Form.Group controlId="formBasicPassword" className="mt-3">
               <Form.Label className="text-white">Password</Form.Label>
               <Form.Control type="password"  name="password" placeholder="Password" value={values.password} onChange={handleChange} />
+            </Form.Group>
+            <Form.Group controlId="formBasicContact" className="mt-3">
+              <Form.Label className="text-white">Contact</Form.Label>
+              <Form.Control type="Contact"  name="Contact" placeholder="Contact" value={values.Contact} onChange={handleChange} />
             </Form.Group>
             <div style={{width: "100%", display: "flex" , alignItems:"center", justifyContent:"center", flexDirection: "column"}} className="mt-4">
               <Link to="/forgotPassword" className="text-white lnk" >Forgot Password?</Link>

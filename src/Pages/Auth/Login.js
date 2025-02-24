@@ -24,6 +24,7 @@ const Login = () => {
   const [values, setValues] = useState({
     email: "",
     password: "",
+    Contact: "",
   });
 
   const toastOptions = {
@@ -34,7 +35,7 @@ const Login = () => {
     pauseOnHover: false,
     draggable: true,
     progress: undefined,
-    theme: "dark",
+    theme: "Light",
   };
 
   const handleChange = (e) => {
@@ -44,13 +45,14 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { email, password } = values;
+    const { email, password , Contact} = values;
 
     setLoading(true);
 
     const { data } = await axios.post(loginAPI, {
       email,
       password,
+      Contact,
     });
 
     if (data.success === true) {
@@ -82,7 +84,7 @@ const Login = () => {
         options={{
           background: {
             color: {
-              value: "#000",
+              value: "#BB86FC",
             },
           },
           fpsLimit: 60,
@@ -95,10 +97,10 @@ const Login = () => {
               },
             },
             color: {
-              value: "#ffcc00",
+              value: "#333333",
             },
             shape: {
-              type: "circle",
+              type: "star",
             },
             opacity: {
               value: 0.5,
@@ -176,6 +178,16 @@ const Login = () => {
                   value={values.password}
                 />
               </Form.Group>
+              <Form.Group controlId="formBasicContact" className="mt-3">
+                <Form.Label className="text-white">Contact</Form.Label>
+                <Form.Control
+                  type="Contact"
+                  name="Contact"
+                  placeholder="Contact"
+                  onChange={handleChange}
+                  value={values.password}
+                />
+              </Form.Group>
               <div
                 style={{
                   width: "100%",
@@ -199,7 +211,7 @@ const Login = () => {
                   {loading ? "Signin…" : "Login"}
                 </Button>
 
-                <p className="mt-3" style={{ color: "#9d9494" }}>
+                <p className="mt-3" style={{ color: "#1E1E1E" }}>
                   Don't Have an Account?{" "}
                   <Link to="/register" className="text-white lnk">
                     Register
