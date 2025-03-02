@@ -185,7 +185,7 @@ const Login = () => {
                   name="Contact"
                   placeholder="Contact"
                   onChange={handleChange}
-                  value={values.password}
+                  value={values.Contact}
                 />
               </Form.Group>
               <div
